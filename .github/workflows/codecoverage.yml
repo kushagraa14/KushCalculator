@@ -14,6 +14,6 @@ jobs:
       - name: Test
         uses: actions/checkout@v1
       - name: Build and Test
-        run:  xcodebuild test -project KushCalculator.xcodeproj -scheme KushCalculator -destination 'platform=iOS Simulator,name=iPhone 11,OS=14.3' build test      
+        run:  xcodebuild test -project KushCalculator.xcodeproj -scheme KushCalculator -destination 'platform=iOS Simulator, id=E2D4D7FE-08CC-4F1E-AEFA-5B0A995C5678, OS:15.2, name=iPad (7th generation)' build test      
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v1.2.1
