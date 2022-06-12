@@ -17,6 +17,7 @@
 		0B2CE16D28563D5900A030DE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B2CE16B28563D5900A030DE /* Main.storyboard */; };
 		0B2CE16F28563D5C00A030DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B2CE16E28563D5C00A030DE /* Assets.xcassets */; };
 		0B2CE17228563D5C00A030DE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B2CE17028563D5C00A030DE /* LaunchScreen.storyboard */; };
+		0B2CE17828564B1F00A030DE /* KushCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2CE17728564B1F00A030DE /* KushCalculator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +44,7 @@
 		0B2CE16E28563D5C00A030DE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0B2CE17128563D5C00A030DE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0B2CE17328563D5C00A030DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0B2CE17728564B1F00A030DE /* KushCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KushCalculator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 			children = (
 				0B2CE14828563A0E00A030DE /* KushCalculator.h */,
 				0B2CE14928563A0E00A030DE /* KushCalculator.docc */,
+				0B2CE17728564B1F00A030DE /* KushCalculator.swift */,
 			);
 			path = KushCalculator;
 			sourceTree = "<group>";
@@ -262,6 +265,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B2CE17828564B1F00A030DE /* KushCalculator.swift in Sources */,
 				0B2CE14A28563A0E00A030DE /* KushCalculator.docc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -495,6 +499,7 @@
 		0B2CE15D28563A0F00A030DE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = A5J34NR598;
@@ -516,6 +521,7 @@
 		0B2CE15E28563A0F00A030DE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = A5J34NR598;
