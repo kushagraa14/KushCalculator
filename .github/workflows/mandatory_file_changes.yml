@@ -14,7 +14,7 @@ jobs:
       id: filter
       with:
         filters: |
-          md: ['CHANGELOG.md']
+          md: ['README.md']
     - name: FAIL if mandatory files are not changed
       if: ${{ steps.filter.outputs.md == 'false' }}
       uses: actions/github-script@v3
