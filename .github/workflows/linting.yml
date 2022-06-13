@@ -1,8 +1,6 @@
 name: Lint code
 
 on:
-  push: ["master"]
-  
   pull_request:
     paths:
       - '.github/workflows/codelint.yml'
