@@ -3,7 +3,6 @@ name: Create a Release Lets check version
 on:
   workflow_dispatch:
   pull_request:
-    types: [closed]
     branches:
       - main
 
