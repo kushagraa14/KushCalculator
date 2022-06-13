@@ -2,13 +2,13 @@ name: Codecov Demo
 
 on:
   push:
-    branches: [main]
+    branches: [ "master" ]
   pull_request:
-    branches: [main]
+    branches: [ "master" ]
 
 jobs:
   test:
-    runs-on: macos-11
+    runs-on: macos-latest
 
     steps:
       - name: Get Sources
