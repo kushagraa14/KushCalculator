@@ -1,4 +1,4 @@
-name: Codecov Demo
+name: Readme and markdown changed
 
 on:
   pull_request:
