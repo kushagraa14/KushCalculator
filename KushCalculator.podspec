@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
 s.name             = 'KushCalculator'  
-s.version          = '1.0.4'  
+s.version          = '1.0.7'  
 s.summary          = 'Custom pod creation for iOS' 
 s.description      = <<-DESC
 This highletbale view changes highlet text and makes your app look fantastic!
