@@ -40,10 +40,7 @@ jobs:
     - name: Check for changes
       run: |
           git diff
-          git checkout ${{github.base_ref}}
-          git add .
-          git commit -m "Updated podspec file with latest version"
-          git push origin ${{github.base_ref}}
+          fastlane run push_to_git_remote 
 
     - name: Pod infos
       run: pod trunk info KushCalculator
