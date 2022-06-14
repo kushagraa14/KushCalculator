@@ -31,19 +31,18 @@ jobs:
         GITHUB_TAG=${GITHUB_REF#refs/tags/}
         echo "GITHUB_TAG=$GITHUB_TAG"
         fastlane run version_bump_podspec path:KushCalculator.podspec version_number:$GITHUB_TAG
-    - name: Check for changes
-      run: git diff
-      
+        
     - name: Configure Git author
       run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           
-    - name: Push changes to ${{github.base_ref}}
-      uses: ad-m/github-push-action@v0.6.0
-      with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{github.base_ref}}
+    - name: Check for changes
+      run: |
+          git diff
+          git add .
+          git commit -m "Updated podspec file with latest version"
+          git push origin master
 
     - name: Pod infos
       run: pod trunk info KushCalculator
