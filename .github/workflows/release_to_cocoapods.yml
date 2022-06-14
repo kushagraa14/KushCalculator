@@ -50,7 +50,17 @@ jobs:
     - name: Validation
       run: pod lib lint KushCalculator.podspec
 
-    - name: Deploy
-      run: pod trunk push KushCalculator.podspec
-      env:
-        COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TRUNK_TOKEN }}
+#     - name: Deploy
+#       run: pod trunk push KushCalculator.podspec
+#       env:
+#         COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TRUNK_TOKEN }}
+
+#     - name: Notify team of Cocoapods deployment 
+#       uses: openhousepvt/slack@v1.3.2
+#       with:
+#           status: 'success'
+#           version: ${{ github.event.release.tag_name }}
+#           platform: 'iOS SDK - Deployed to Cocoapods'
+#           channel: '#squad-mobile'
+#       env:
+#           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_NOTIFY_RELEASES_WEBHOOK_URL }}
