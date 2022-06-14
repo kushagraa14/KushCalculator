@@ -1,29 +1,46 @@
-name: Create a Release Lets check version
+# How to update COCOAPODS_TRUNK_TOKEN
+#
+# 1) Register the email with:
+#      pod trunk register <email> --description='Deploy to CocoaPods GitHub Action'
+#
+# 2) Click the link on the confirmation email.
+#
+# 3) Extract the value from the "password <COCOAPODS_TRUNK_TOKEN>" like output of the following command:
+#      grep -A2 'trunk.cocoapods.org' ~/.netrc | grep password
+#
+# 4) IMPORTANT - Register again to locally use a separate token:
+#      pod trunk register <email> --description='<Machine description>'
+#
+
+name: Deploy to CocoaPods
 
 on:
-  workflow_dispatch:
-  pull_request:
-    branches:
-      - main
+  release:
+    types: [created]
 
 jobs:
-  determine_version:
-    name: Determine the next build version
-    if: github.event.pull_request.merged == true
-    runs-on: ubuntu-latest
-    outputs:
-      version: ${{ steps.echo_version.outputs.version }}
+  build:
+
+    runs-on: macos-latest
+
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Install dependencies
-        run: npm ci
-        working-directory: ./.github/release
-      - id: determine_version
-        name: Get Version
-        run: npm run release -- --ci --release-version | tail -n 1 > RELEASE_VERSION
-        working-directory: ./.github/release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - id: echo_version
-        run: echo "::set-output name=version::$(cat ./.github/release/RELEASE_VERSION)"
+    - uses: actions/checkout@v2
+
+    - name: Update Podspec version
+      run: |
+        GITHUB_TAG=${GITHUB_REF#refs/tags/}
+        echo "GITHUB_TAG=$GITHUB_TAG"
+        fastlane run version_bump_podspec path:ImmutableGraph.podspec version_number:$GITHUB_TAG
+    - name: Check for changes
+      run: git diff
+
+    - name: Pod infos
+      run: pod trunk info KushCalculator
+
+    - name: Validation
+      run: pod lib lint KushCalculator.podspec
+
+    - name: Deploy
+      run: pod trunk push KushCalculator.podspec
+      env:
+        COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TRUNK_TOKEN }}
