@@ -31,16 +31,10 @@ jobs:
         GITHUB_TAG=${GITHUB_REF#refs/tags/}
         echo "GITHUB_TAG=$GITHUB_TAG"
         fastlane run version_bump_podspec path:KushCalculator.podspec version_number:$GITHUB_TAG
-        
-    - name: Configure Git author
-      run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
           
     - name: Check for changes
       run: |
           git diff
-          fastlane run push_to_git_remote 
 
     - name: Pod infos
       run: pod trunk info KushCalculator
