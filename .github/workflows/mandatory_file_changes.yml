@@ -1,23 +1,23 @@
-# name: Readme and markdown changed
+name: Readme and markdown changed
 
-# on:
-#   pull_request:
-#     branches: [ "master" ]
+on:
+  pull_request:
+    branches: [ "master" ]
 
-# jobs:
-#   test:
-#     runs-on: macos-latest
+jobs:
+  test:
+    runs-on: macos-latest
 
-#     steps:
-#     - name: Setup Path Filter task and Execute
-#       uses: dorny/paths-filter@v2
-#       id: filter
-#       with:
-#         filters: |
-#           md: ['README.md']
-#     - name: FAIL if mandatory files are not changed
-#       if: ${{ steps.filter.outputs.md == 'false' }}
-#       uses: actions/github-script@v3
-#       with:
-#         script: |
-#           core.setFailed('Mandatory markdown files were not changed')
+    steps:
+    - name: Setup Path Filter task and Execute
+      uses: dorny/paths-filter@v2
+      id: filter
+      with:
+        filters: |
+          md: ['README.md']
+    - name: FAIL if mandatory files are not changed
+      if: ${{ steps.filter.outputs.md == 'false' }}
+      uses: actions/github-script@v3
+      with:
+        script: |
+          core.setFailed('Mandatory markdown files were not changed')
