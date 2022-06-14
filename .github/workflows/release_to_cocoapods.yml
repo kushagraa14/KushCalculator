@@ -42,10 +42,10 @@ jobs:
     - name: Validation
       run: pod lib lint KushCalculator.podspec
 
-#     - name: Deploy
-#       run: pod trunk push KushCalculator.podspec
-#       env:
-#         COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TRUNK_TOKEN }}
+    - name: Deploy
+      run: pod trunk push KushCalculator.podspec
+      env:
+        COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TRUNK_TOKEN }}
 
 #     - name: Notify team of Cocoapods deployment 
 #       uses: openhousepvt/slack@v1.3.2
