@@ -40,9 +40,10 @@ jobs:
     - name: Check for changes
       run: |
           git diff
+          git checkout ${{github.base_ref}}
           git add .
           git commit -m "Updated podspec file with latest version"
-          git push origin master
+          git push origin ${{github.base_ref}}
 
     - name: Pod infos
       run: pod trunk info KushCalculator
