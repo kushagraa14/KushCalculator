@@ -27,7 +27,9 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Carthage build
-      run: sh ./scripts/carthage.sh build --platform "ios,macos" --no-skip-current
+      run: |
+        sh ./scripts/carthage update --platform iOS --cache-builds
+        sh ./scripts/carthage.sh build --platform "ios,macos" --no-skip-current
 
   carthage_xcframework:
     runs-on: macOS-latest
