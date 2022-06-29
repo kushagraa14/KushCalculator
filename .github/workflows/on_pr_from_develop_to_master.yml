@@ -1,0 +1,19 @@
+name: validate PR raised from develop branched to master branch
+on:
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  lint-static_checks-test-build:
+    if: github.head_ref == 'develop'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout the code from Repo
+        uses: actions/checkout@v2
+
+      - name: Mandatory File Changes
+        uses: ./.github/mini_flows/s1_mandatory_filechanges
