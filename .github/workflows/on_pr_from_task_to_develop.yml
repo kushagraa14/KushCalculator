@@ -1,0 +1,22 @@
+name: validate PR raised from task/** branched to develop branch
+on:
+  pull_request:
+    branches: [ develop ]
+
+jobs:
+  lint-staticChecks-test-build:
+    if: startsWith(github.head_ref, 'task/')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout the code from Repo
+        uses: actions/checkout@v2
+
+      - name: Setup JDK 11.
+        uses: ./.github/mini_flows/s2_setup_jdk
+
+      - name: Run lint tests and Upload results
+        uses: ./.github/mini_flows/s3_lint
