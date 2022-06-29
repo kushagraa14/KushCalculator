@@ -15,8 +15,8 @@ jobs:
       - name: Checkout the code from Repo
         uses: actions/checkout@v2
 
-      - name: Setup JDK 11.
-        uses: ./.github/mini_flows/s2_setup_jdk
+      - name: Setup Swift PM.
+        uses: ./.github/mini_flows/s3_swiftPMbuild
 
       - name: Run lint tests and Upload results
         uses: ./.github/mini_flows/s3_lint
