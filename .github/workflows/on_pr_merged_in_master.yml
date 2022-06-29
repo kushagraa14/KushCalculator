@@ -1,0 +1,21 @@
+name: validate master branch after PR is Merged
+
+on:
+  pull_request:
+    branches: [master]
+    types: [closed]
+
+jobs:
+  lint-static_checks-test-build:
+    if: ${{ github.event.pull_request.merged }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout the code from Repo
+        uses: actions/checkout@v2
+        
+      - name: Run lint tests and Upload results
+        uses: ./.github/mini_flows/s3_lint
