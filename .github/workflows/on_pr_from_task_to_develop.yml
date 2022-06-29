@@ -4,7 +4,7 @@ on:
     branches: [ develop ]
 
 jobs:
-  lint-staticChecks-test-build:
+  lint-staticChecks-test:
     if: startsWith(github.head_ref, 'task/')
     runs-on: ubuntu-latest
     permissions:
